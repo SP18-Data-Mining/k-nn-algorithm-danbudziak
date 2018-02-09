@@ -35,25 +35,16 @@ for line in testData :
 	dataObject.append(float(line[6]))
 	testFeatures.append(dataObject)
 
-def euclideanDistance(x1, x2, leng):
-	distance = 0 
-	for x in range(leng):
-		distance += pow((x1[0] - x2[0]), 2)
-	return math.sqrt(distance)
 
 def getNeighbors(trainingFeatures, testFeatures, k=3):
-	distance = []
-	neighbors = []
-	length = len(testFeatures) - 1
-	for i,group in enumerate(trainingData) :
-		dist = euclideanDistance(testFeatures[0], trainingFeatures[0], length)
-		distance.append((dist))
-	for x in range (k) :
-		neighbors.append(trainingLabels[0])
-	return neighbors
-
+        for x,tesData in enumerate(testData):
+          mindistance=100
+          for y,trData in enumerate(trainingData):
+               euclidean_distance = math.sqrt(((testFeatures[0][0] - trainingFeatures[0][0])**2) + ((testFeatures[0][1] - trainingFeatures[0][1])**2))
+               neighbors = (int(euclidean_distance))
+        return neighbors
+               
 for i,group in enumerate(testData) :
     print"Test Data is: ", group
     print'Prediction Label is: ', getNeighbors(trainingFeatures, testFeatures, k=3)
     print'\n'
-
